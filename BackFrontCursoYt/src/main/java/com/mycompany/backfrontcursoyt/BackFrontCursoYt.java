@@ -17,6 +17,20 @@ public class BackFrontCursoYt {
         char sex = 'M';
         boolean is_legal_age = age >= 18;
         
+        int x = 5;
+        int y = 10;
+        int sum = x + y;
+        int subtraction = x - y;
+        int multiplication = x * y;
+        double division = x / y;
+        int rest = x % y;
+        
+        System.out.println(sum);
+        System.out.println(subtraction);
+        System.out.println(multiplication);
+        System.out.println(division);
+        System.out.println(rest);
+        
         System.out.println("Hello World!");
         System.out.println("Hi, my name is.. " + person);
         System.out.println("i'm " + age + " years old");
