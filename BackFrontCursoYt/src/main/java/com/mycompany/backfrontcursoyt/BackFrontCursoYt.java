@@ -9,8 +9,10 @@ package com.mycompany.backfrontcursoyt;
 
 public class BackFrontCursoYt {
       
+    static String person = "Daniel";
+    
     public static void main(String[] args) {
-        String person = "Daniel";
+        
         int age = 19;
         float height = 103.4f;
         double high = 1.85;
@@ -29,8 +31,8 @@ public class BackFrontCursoYt {
         System.out.println(sum);
         System.out.println(subtraction);
         System.out.println(multiplication);
-        System.out.println(division);
-        System.out.println(division2);
+        System.out.println("float: " + division);
+        System.out.println("double: " + division2);
         System.out.println(rest);
         
         System.out.println("Hello World!");
