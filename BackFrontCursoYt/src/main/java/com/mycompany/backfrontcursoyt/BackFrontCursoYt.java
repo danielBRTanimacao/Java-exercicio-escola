@@ -17,18 +17,20 @@ public class BackFrontCursoYt {
         char sex = 'M';
         boolean is_legal_age = age >= 18;
         
-        int x = 5;
-        int y = 10;
-        int sum = x + y;
-        int subtraction = x - y;
-        int multiplication = x * y;
-        double division = x / y;
-        int rest = x % y;
+        double x = 20;
+        double y = 3.1;
+        int sum = (int) (x + y);
+        int subtraction = (int) (x - y);
+        int multiplication = (int) (x * y);
+        float division = (float) (x / y);
+        double division2 = (double) (x / y);
+        int rest = (int) (x % y);
         
         System.out.println(sum);
         System.out.println(subtraction);
         System.out.println(multiplication);
         System.out.println(division);
+        System.out.println(division2);
         System.out.println(rest);
         
         System.out.println("Hello World!");
