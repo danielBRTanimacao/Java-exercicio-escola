@@ -13,6 +13,9 @@ public class BackFrontCursoYt {
     
     public static void main(String[] args) {
         
+        System.out.println(person);
+        
+       /*
         int age = 19;
         float height = 103.4f;
         double high = 1.85;
@@ -42,5 +45,6 @@ public class BackFrontCursoYt {
         System.out.println("but my high is " + high);
         System.out.println("my sex is " + sex);
         System.out.println("Am I finally of age? " + is_legal_age);
+       */
     }
 }
