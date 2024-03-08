@@ -47,4 +47,9 @@ public class BackFrontCursoYt {
         System.out.println("Am I finally of age? " + is_legal_age);
        */
     }
+    
+    public static boolean ehPar(int numero) {
+        return numero % 2 == 0;
+     }
+    
 }
