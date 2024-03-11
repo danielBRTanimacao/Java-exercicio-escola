@@ -11,8 +11,14 @@ package com.mycompany.sistemacademia;
 public class SistemAcademia {
 
     public static void main(String[] args) {
-        float kilos = 90.5f;
-        String name = "daniel";
-        System.out.println(kilos + "Kg, " + "nome: " + name);
+        maiorIdade(10);
+    }
+    
+    public static void maiorIdade(int number) {
+        if(number >= 18) {
+            System.out.println("Maior que 18");
+        } else {
+            System.out.println("Menor de 18");
+        }
     }
 }
