@@ -8,10 +8,16 @@ package com.mycompany.sistemacademia;
  *
  * @author danie
  */
+
+import java.util.Scanner;
+
 public class SistemAcademia {
 
     public static void main(String[] args) {
-        maiorIdade(10);
+        Scanner input = new Scanner(System.in);
+        System.out.println("Informe sua idade: ");
+        int age = input.nextInt();
+        maiorIdade(age);
     }
     
     public static void maiorIdade(int number) {
@@ -20,5 +26,9 @@ public class SistemAcademia {
         } else {
             System.out.println("Menor de 18");
         }
+    }
+    
+    public static void contador() {
+        System.out.println("lista");
     }
 }
