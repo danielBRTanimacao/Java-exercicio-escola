@@ -18,7 +18,11 @@ public class SistemAcademia {
         System.out.println("Informe sua idade: ");
         int age = input.nextInt();
         maiorIdade(age);
-        caseSwitch(6);
+        Scanner inputage = new Scanner(System.in);
+        System.out.println("Informe um dia: ");
+        int day = inputage.nextByte();
+        caseSwitch(day);
+        forCase();
     }
     
     public static void maiorIdade(int number) {
@@ -54,5 +58,9 @@ public class SistemAcademia {
               System.out.println("Sunday");
               break;
           }
+    }
+    
+    public static void forCase() {
+        System.out.println("hello");
     }
 }
