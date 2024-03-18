@@ -20,8 +20,7 @@ public class GerenciaBanco {
     }
     
     public static void dataPerson(String person, int age, double weight, float height, char sex) {
-        List<String> dataBasePerson = new ArrayList<>();
-        dataBasePerson.add(person);
+        
     }
     
 }
