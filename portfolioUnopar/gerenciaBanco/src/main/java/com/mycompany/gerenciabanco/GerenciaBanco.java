@@ -31,5 +31,4 @@ public class GerenciaBanco {
             System.out.println(lista.get(i));
         }
     }
-    
 }
