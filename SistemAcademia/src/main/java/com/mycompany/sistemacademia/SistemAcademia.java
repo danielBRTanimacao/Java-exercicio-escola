@@ -9,7 +9,6 @@ package com.mycompany.sistemacademia;
  * @author danie
 */
 
-
 public class SistemAcademia {
     String name;
     int age;
@@ -26,4 +25,5 @@ public class SistemAcademia {
         person.weight = 98.3;
         System.out.println(person);
     }
+
 }
