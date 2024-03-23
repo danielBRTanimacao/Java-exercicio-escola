@@ -7,13 +7,11 @@ public class ExemploLeitorDados {
         String enterStr = scan.next();
         System.out.print("Digite sua idade: ");
         int enterInt = scan.nextInt();
-        System.out.print("Digite seu peso: ");
-        double enterDouble = scan.nextDouble();
-        printItens(enterInt, enterStr, enterDouble);
+        printItens(enterInt, enterStr);
         scan.close();
     }
 
-    public static void printItens(int age, String name, double weight) {
-        System.out.printf("Nome: %s\nIdade: %d\nPeso: %d", name, age, weight);
+    public static void printItens(int age, String name) {
+        System.out.printf("Nome: %s\nIdade: %d", name, age);
     }
 }
