@@ -7,11 +7,20 @@ public class ExemploLeitorDados {
         String enterStr = scan.next();
         System.out.print("Digite sua idade: ");
         int enterInt = scan.nextInt();
-        printItens(enterInt, enterStr);
-        scan.close();
+        if (enterInt < 18) {
+            System.out.println("Vc não pode se registrar");
+        } else {
+            System.out.print("Digite seu sexo: ");
+            String enterChar = scan.next();
+            printItens(enterInt, enterStr, enterChar);
+            scan.close();
+            // creatPassword();
+        }
     }
 
-    public static void printItens(int age, String name) {
-        System.out.printf("Nome: %s\nIdade: %d", name, age);
+    public static void printItens(int age, String name, String sex) {
+        System.out.printf("Nome: %s\nIdade: %d\nSexo: %s", name, age, sex);
     }
+
+
 }
