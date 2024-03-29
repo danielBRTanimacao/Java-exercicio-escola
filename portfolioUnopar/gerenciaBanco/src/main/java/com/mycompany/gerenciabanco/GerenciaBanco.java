@@ -18,9 +18,11 @@ class Client {
     
     private double cash_balance;
 
-    
     public Client(String name, String last_name, String cpf) {
-        
+        this.name = name;
+        this.last_name = last_name;
+        this.cpf = cpf;
+        this.cash_balance = 0;
     }
 }
 
