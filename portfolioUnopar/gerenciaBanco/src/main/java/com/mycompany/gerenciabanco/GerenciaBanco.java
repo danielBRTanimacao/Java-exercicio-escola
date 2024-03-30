@@ -43,7 +43,11 @@ class Client {
 
 class Manager extends Client {
     
-    public Manager() {
+    public Manager(String name, String last_name, int age, String cpf) {
+        super(name, last_name, age, cpf);
+    }
+
+    public static void createUser() {
         
     }
 }
@@ -53,6 +57,6 @@ public class GerenciaBanco {
     public static void main(String[] args) {
         System.out.println("testes de novo");
         
-        // Client person = new Client(name, last_name, age, cpf);
+        Manager person_manager = new Manager(null, null, 0, null);
     }
 }
