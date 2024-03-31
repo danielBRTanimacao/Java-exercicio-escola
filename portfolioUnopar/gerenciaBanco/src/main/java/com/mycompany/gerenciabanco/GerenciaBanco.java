@@ -35,7 +35,7 @@ class Client {
         System.out.println("Depositando");
     }
     
-    public static void withdrawMoney() {
+    public static void withdrawMoney(double value_withdrawn) {
         System.out.println("Sacando");
     }
 
@@ -48,6 +48,8 @@ class Manager extends Client {
     }
 
     public static void createUser() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("================= Criando usuario =================");
         
     }
 }
@@ -55,8 +57,7 @@ class Manager extends Client {
 public class GerenciaBanco {
 
     public static void main(String[] args) {
-        System.out.println("testes de novo");
-        
-        Manager person_manager = new Manager(null, null, 0, null);
+        Manager person_manager = new Manager("Daniel", "Tenório", 19, "000.000.000-00");
+        person_manager.createUser();
     }
 }
