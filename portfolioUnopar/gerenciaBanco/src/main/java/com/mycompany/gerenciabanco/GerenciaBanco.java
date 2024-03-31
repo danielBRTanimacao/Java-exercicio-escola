@@ -38,6 +38,10 @@ class Client {
     public static void withdrawMoney(double value_withdrawn) {
         System.out.println("Sacando");
     }
+    
+    public static void showStatus() {
+        System.out.println("teste");
+    }
 
 }
 
@@ -49,8 +53,23 @@ class Manager extends Client {
 
     public static void createUser() {
         Scanner input = new Scanner(System.in);
-        System.out.println("================= Criando usuario =================");
         
+        System.out.println("================= Criando usuario =================");
+        System.out.println("Digite seu nome: ");
+        String name = input.nextLine();
+        System.out.println("Digite seu sobrenome: ");
+        String last_name = input.nextLine();
+        System.out.println("Digite sua idade: ");
+        int age = input.nextInt();
+        System.out.println("Digite seu cpf: ");
+        String cpf = input.nextLine();
+        
+        Client person = new Client(name, last_name, age, cpf);
+        actionUser(person);
+    }
+    
+    public static void actionUser(Object person_client) {
+        System.out.println(person_client.getClass());
     }
 }
 
