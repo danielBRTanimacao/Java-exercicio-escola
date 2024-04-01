@@ -38,11 +38,6 @@ class Client {
     public static void withdrawMoney(double value_withdrawn) {
         System.out.println("Sacando");
     }
-    
-    public static void showStatus() {
-        System.out.printf("nome:\n %s", "name");
-    }
-
 }
 
 class Manager extends Client {
@@ -61,27 +56,36 @@ class Manager extends Client {
         String last_name = input.next();
         System.out.println("Digite sua idade: ");
         int age = input.nextInt();
-        System.out.println("Digite seu cpf: ");
-        String cpf = input.next();
-        
-        Client person = new Client(name, last_name, age, cpf);
-        System.out.println("O usuario deseja fazer alguma ação? 1[S] 2[N] ");
-        int response = input.nextInt();
-        if (response == 1) {
-            actionForUser(person, input);
+        if (age >= 18) {
+            System.out.println("Digite seu cpf: ");
+            String cpf = input.next();
+
+            Client person = new Client(name, last_name, age, cpf);
+            System.out.println("O usuario deseja fazer alguma ação?\nDigite 1[Sim] ou 2[Não]: ");
+            int response = input.nextInt();
+            if (response == 1) {
+                actionForUser(person, input);
+            }
         }
-        
     }
     
     public static void actionForUser(Object person, Object input) {
-        System.out.println("Ação");
+        boolean continue_ = true;
+        while(continue_) {
+            System.out.println(
+                    "Bem vindo qual ação deseja fazer?"
+                            + "\n1 - Consultar SALDO..."
+                            + "\n2 - Fazer DEPOSITO"
+            );
+            String name = input.next();
+        }
     }
 }
 
 public class GerenciaBanco {
 
     public static void main(String[] args) {
-        // instanciando classe depois criar banco de dados
+        // instanciando classe depois criar banco de dados sql
         Manager person_manager = new Manager("Daniel", "Tenório", 19, "000.000.000-00");
         person_manager.createUser();
     }
