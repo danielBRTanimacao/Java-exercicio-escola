@@ -27,15 +27,15 @@ class Client {
         this.cash_balance = 0;
     }
     
-    public static void checkBalance() {
+    public void checkBalance() {
         System.out.println("Checando dinheiro que possui");
     }
     
-    public static void makeDeposit() {
+    public void makeDeposit() {
         System.out.println("Depositando");
     }
     
-    public static void withdrawMoney(double value_withdrawn) {
+    public void withdrawMoney(double value_withdrawn) {
         System.out.println("Sacando");
     }
 }
@@ -46,7 +46,7 @@ class Manager extends Client {
         super(name, last_name, age, cpf);
     }
 
-    public static void createUser() {
+    public void createUser() {
         Scanner input = new Scanner(System.in);
         
         System.out.println("================= Criando usuario =================");
@@ -67,13 +67,12 @@ class Manager extends Client {
             if (response == 1) {
                 boolean continue_ = true;
                 while(continue_) {
-                    System.out.println(
-                            "Bem vindo qual ação deseja fazer?"
-                                    + "\n1 - Consultar SALDO/STATUS"
-                                    + "\n2 - Fazer DEPOSITO"
-                                    + "\n3 - Fazer um SAQUE"
-                                    + "\n4 - SAIR DO APP"
-                    );
+                    System.out.println("""
+                                       Bem vindo qual a\u00e7\u00e3o deseja fazer?
+                                       1 - Consultar SALDO/STATUS
+                                       2 - Fazer DEPOSITO
+                                       3 - Fazer um SAQUE
+                                       4 - SAIR DO APP""");
                     int choose = input.nextInt();
                     switch(choose) {
                         case 1:
