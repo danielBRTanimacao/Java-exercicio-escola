@@ -110,11 +110,12 @@ public class GerenciaBanco {
         // instanciando classe depois criar banco de dados sql
         Manager person_manager = new Manager("Daniel", "Tenório", 19, "000.000.000-00");
         Scanner input = new Scanner(System.in);
+        System.out.println("Deseja criar um usuario? ");
         int choose_action = input.nextInt();
         if (choose_action == 1) {
             person_manager.createUser();
         } else {
-            System.out.println("Obrigado volte sempre")
+            System.out.println("Obrigado volte sempre");
         }
     }
 }
