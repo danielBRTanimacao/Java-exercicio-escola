@@ -28,7 +28,7 @@ class Client {
     }
     
     public static void checkBalance() {
-        System.out.println("Teste");
+        System.out.println("Checando dinheiro que possui");
     }
     
     public static void makeDeposit() {
@@ -40,7 +40,7 @@ class Client {
     }
     
     public static void showStatus() {
-        System.out.println("teste");
+        System.out.printf("nome:\n %s", "name");
     }
 
 }
@@ -56,26 +56,32 @@ class Manager extends Client {
         
         System.out.println("================= Criando usuario =================");
         System.out.println("Digite seu nome: ");
-        String name = input.nextLine();
+        String name = input.next();
         System.out.println("Digite seu sobrenome: ");
-        String last_name = input.nextLine();
+        String last_name = input.next();
         System.out.println("Digite sua idade: ");
         int age = input.nextInt();
         System.out.println("Digite seu cpf: ");
-        String cpf = input.nextLine();
+        String cpf = input.next();
         
         Client person = new Client(name, last_name, age, cpf);
-        actionUser(person);
+        System.out.println("O usuario deseja fazer alguma ação? 1[S] 2[N] ");
+        int response = input.nextInt();
+        if (response == 1) {
+            actionForUser(person, input);
+        }
+        
     }
     
-    public static void actionUser(Object person_client) {
-        System.out.println(person_client.getClass());
+    public static void actionForUser(Object person, Object input) {
+        System.out.println("Ação");
     }
 }
 
 public class GerenciaBanco {
 
     public static void main(String[] args) {
+        // instanciando classe depois criar banco de dados
         Manager person_manager = new Manager("Daniel", "Tenório", 19, "000.000.000-00");
         person_manager.createUser();
     }
