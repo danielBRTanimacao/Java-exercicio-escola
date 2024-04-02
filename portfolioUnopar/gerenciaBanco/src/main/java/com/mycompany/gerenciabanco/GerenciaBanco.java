@@ -33,11 +33,17 @@ class Client {
                         Seus dados ->
                         Nome: %s %s
                         Idade: %d 
-                        Cpf: %s """, name, last_name, age, cpf);
+                        Cpf: %s
+                        """, name, last_name, age, cpf);
     }
     
     public void makeDeposit(double value_deposit) {
-        System.out.println("Depositando");
+        if (value_deposit > 0) {
+            cash_balance -= value_deposit;
+            System.out.println("Depositado R$" + value_deposit + " em sua conta!");
+        } else {
+            System.out.println("Digite um valor valido ou acima de 0");
+        }
     }
     
     public void withdrawMoney(double value_withdrawn) {
