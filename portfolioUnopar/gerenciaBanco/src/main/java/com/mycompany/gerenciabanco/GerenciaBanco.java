@@ -28,15 +28,25 @@ class Client {
     }
     
     public void checkBalance() {
-        System.out.println("Checando dinheiro que possui");
+        System.out.printf("""
+                        Checando o dinheiro que possui...
+                        Seus dados ->
+                        Nome: %s %s
+                        Idade: %d 
+                        Cpf: %s """, name, last_name, age, cpf);
     }
     
-    public void makeDeposit() {
+    public void makeDeposit(double value_deposit) {
         System.out.println("Depositando");
     }
     
     public void withdrawMoney(double value_withdrawn) {
-        System.out.println("Sacando");
+        if (value_withdrawn > 0 && value_withdrawn <= cash_balance) {
+            cash_balance -= value_withdrawn;
+            System.out.println("Você fez um saque de R$" + value_withdrawn + " foi realizado com sucesso!");
+        } else {
+            System.out.printf("Não foi possivel fazer o saque, digite um valor valido!");
+        }
     }
 }
 
@@ -79,10 +89,14 @@ class Manager extends Client {
                             person.checkBalance();
                             break;
                         case 2:
-                            person.makeDeposit();
+                            System.out.println("Digite um valor para depositar: ");
+                            double value_deposit = input.nextDouble();
+                            person.makeDeposit(value_deposit);
                             break;
                         case 3:
-                            person.withdrawMoney(10);
+                            System.out.println("Digite um valor para sacar: ");
+                            double value_withdrawn = input.nextDouble();
+                            person.withdrawMoney(value_withdrawn);
                             break;
                         case 4:
                             continue_ = false;
@@ -97,10 +111,6 @@ class Manager extends Client {
             System.out.println("Não e posivel criar conta");
         }
     }
-    
-    public static void actionForUser(Object person, Object input) {
-
-    }
 }
 
 public class GerenciaBanco {
@@ -108,10 +118,12 @@ public class GerenciaBanco {
     public static void main(String[] args) {
         // instanciando classe depois criar banco de dados sql
         Manager person_manager = new Manager("Daniel", "Tenório", 19, "000.000.000-00");
+        // input coleta o valor digitado pelo usuario deve ser um valor inteiro
         Scanner input = new Scanner(System.in);
-        System.out.println("Deseja criar um usuario? ");
+        System.out.println("Deseja criar um usuario? 1[S] 2[N]");
         int choose_action = input.nextInt();
         if (choose_action == 1) {
+            // metodo criar usuario classe Manager
             person_manager.createUser();
         } else {
             System.out.println("Obrigado volte sempre");
