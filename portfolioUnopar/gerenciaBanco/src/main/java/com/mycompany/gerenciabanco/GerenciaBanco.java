@@ -31,15 +31,16 @@ class Client {
         System.out.printf("""
                         Checando o dinheiro que possui...
                         Seus dados ->
+                        Saldo: %5.2f
                         Nome: %s %s
                         Idade: %d 
                         Cpf: %s
-                        """, name, last_name, age, cpf);
+                        """, cash_balance, name, last_name, age, cpf);
     }
     
     public void makeDeposit(double value_deposit) {
         if (value_deposit > 0) {
-            cash_balance -= value_deposit;
+            cash_balance += value_deposit;
             System.out.println("Depositado R$" + value_deposit + " em sua conta!");
         } else {
             System.out.println("Digite um valor valido ou acima de 0");
@@ -116,6 +117,7 @@ class Manager extends Client {
         } else {
             System.out.println("Não e posivel criar conta");
         }
+        input.close();
     }
 }
 
@@ -134,5 +136,6 @@ public class GerenciaBanco {
         } else {
             System.out.println("Obrigado volte sempre");
         }
+        input.close();
     }
 }
