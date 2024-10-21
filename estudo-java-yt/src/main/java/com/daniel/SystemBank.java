@@ -4,6 +4,25 @@ public class SystemBank {
     public static void main(String[] args) {
         Person user = new Person("Bico Seco", 10, "nenhum", 12.3);
         Manager manager = new Manager("Gerente", 23, "Bank", 100, true);
+        Bank bras = new Bank(user, manager);
+
+        bras.takeData();
+    }
+}
+
+class Bank {
+    double amount = 10000;
+    Person userBank;
+    Manager managerBank;
+
+    public Bank(Person userBank, Manager managerBank){
+        System.out.println("Qual ação deseja fazer?");
+        this.userBank = userBank;
+        this.managerBank = managerBank;
+    }
+
+    public String takeData(){
+        return "";
     }
 }
 
