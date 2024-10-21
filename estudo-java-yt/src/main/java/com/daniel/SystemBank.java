@@ -2,7 +2,8 @@ package com.daniel;
 
 public class SystemBank {
     public static void main(String[] args) {
-        Person user = new Person("Bico Seco", 10, "vagaba", 12.3);
+        Person user = new Person("Bico Seco", 10, "nenhum", 12.3);
+        Manager manager = new Manager("Gerente", 23, "Bank", 100, true);
     }
 }
 
@@ -18,7 +19,16 @@ class Person {
         this.work = work;
         this.money = money;
         System.out.println("========================");
-        System.out.println("Olá, " + this.name + " seus dados:\nIdade: " + this.age);
+        System.out.println("Olá, " + this.name + " seus dados:\nIdade: " + this.age +"\nTrabalho: " + this.work +"\nDinheiro: " + this.money);
         System.out.println("========================");
+    }
+}
+
+class Manager extends Person {
+    boolean persmissions;
+
+    public Manager(String name, int age, String work, double money, boolean persmissions) {
+        super(name, age, work, money);
+        this.persmissions = persmissions;
     }
 }
