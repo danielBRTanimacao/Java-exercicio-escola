@@ -3,7 +3,7 @@ package com.daniel;
 import java.util.Random;
 import java.util.Scanner;
 
-public class RussianRoulette {
+public class TwentyOneGame {
     public static void main(String[] args) {
         Cards card = new Cards();
         Scanner read = new Scanner(System.in);
