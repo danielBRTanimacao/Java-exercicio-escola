@@ -8,31 +8,34 @@ public class TwentyOneGame {
         Cards card = new Cards();
         Scanner read = new Scanner(System.in);
 
-        System.out.println("================");
-        System.out.println("Roletinha");
-        System.out.println("================");
+        System.out.println(ConsoleColors.BLACK + "=================" + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.BLACK_BOLD + "---- 21" + ConsoleColors.RESET + " GAME " + ConsoleColors.BLACK_BOLD  + "----" + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.BLACK + "=================" + ConsoleColors.RESET);
 
-        System.out.println("Nome 1: ");
+        System.out.println("--------" + ConsoleColors.BLACK_BOLD +  " Primeiro jogador " + ConsoleColors.RESET + "--------");
         String player1Name = read.nextLine();
         Player p1 = new Player(player1Name);
 
-        System.out.println("Nome 2 digite [0] para um bot: ");
+        System.out.println("-------- " + ConsoleColors.BLACK_BOLD + "Segundo jogador" + ConsoleColors.RESET + " -------- \nDIGITE [0] para um BOT: ");
         String player2Name = read.nextLine();
         Player p2 = new Player(player2Name);
         if (player2Name.equalsIgnoreCase("0")) {
             p2.name = "BOT";
         }
         
-        boolean endGame = false;
         int playerTime = 0;
         Player[] playersLocal = {p1, p2};
-        while (endGame == false) {
+        while (true) {
             if (playersLocal[0].count > 21) {
+                System.out.println(ConsoleColors.BLACK + "=====================" + ConsoleColors.RESET);
                 System.out.println("O ganhador foi " + playersLocal[1].name);
-                endGame = true;
+                System.out.println(ConsoleColors.BLACK + "=====================" + ConsoleColors.RESET);
+                break;
             } else if (playersLocal[1].count > 21) {
+                System.out.println(ConsoleColors.BLACK + "=====================" + ConsoleColors.RESET);
                 System.out.println("O ganhador foi " + playersLocal[0].name);
-                endGame = true;
+                System.out.println(ConsoleColors.BLACK + "=====================" + ConsoleColors.RESET);
+                break;
             }
             System.out.println("Contador: " + playersLocal[0].count + " " + playersLocal[0].name);
             System.out.println("Contador: " + playersLocal[1].count + " " + playersLocal[1].name);
@@ -42,7 +45,19 @@ public class TwentyOneGame {
             if (choose.equalsIgnoreCase("S")) {
                 playersLocal[playerTime].count += card.getCard();
                 System.out.println("Seu contador: " + playersLocal[playerTime].count);
+            } else if (playersLocal[0].skip == true || playersLocal[1].skip == true) {
+                if (playersLocal[0].count > playersLocal[1].count) {
+                    System.out.println("O ganhador foi " + playersLocal[0].name);
+                    break;
+                } else if (playersLocal[0].count == playersLocal[1].count) {
+                    System.out.println("DEU EMPATE");
+                    break;
+                } else if (playersLocal[0].count < playersLocal[1].count) {
+                    System.out.println("O ganhador foi " + playersLocal[1].name);
+                    break;
+                }
             } else {
+                playersLocal[playerTime].skip = true;
                 System.out.println("Jogador " + playersLocal[playerTime].name + " pulou a vez...");
                 if (playerTime == 0) {
                     playerTime = 1;
