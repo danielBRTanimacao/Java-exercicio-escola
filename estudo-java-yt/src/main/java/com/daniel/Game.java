@@ -47,7 +47,7 @@ public class Game {
     public static int userChosedValue() {
         Scanner read = new Scanner(System.in);
         int n = read.nextInt();
-        // read.close();
+        read.close();
         return n;
     }
 }

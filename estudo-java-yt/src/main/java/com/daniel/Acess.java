@@ -8,7 +8,7 @@ public class Acess {
         System.out.println(" PUBLIC - PRIVATE - PROTECTED - DEFAULT");
         printCenter(ConsoleColors.BLACK + "========================================" + ConsoleColors.RESET);
 
-        Car car = new Car();
+        // Car car = new Car();
     }
 
     public static void printCenter(String text) {
