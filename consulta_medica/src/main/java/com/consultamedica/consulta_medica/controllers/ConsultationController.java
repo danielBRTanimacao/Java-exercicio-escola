@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.consultamedica.consulta_medica.entities.Consultation;
 import com.consultamedica.consulta_medica.services.ConsultationService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController

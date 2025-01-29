@@ -19,4 +19,8 @@ public class Medic {
     
     @ElementCollection
     private List<LocalDateTime> availableTime;
+
+    public List<Consultation> getDisponibleDates() {
+        throw new UnsupportedOperationException("Unimplemented method 'getDisponibleDates'");
+    }
 }

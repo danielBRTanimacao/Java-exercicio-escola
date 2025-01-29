@@ -26,4 +26,19 @@ public class Consultation {
     private LocalDateTime dateTime;
 
     private boolean cancel = false;
+
+    public void setMedic(Medic medic2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setMedic'");
+    }
+
+    public void setDataTime(LocalDateTime dateTime2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDataTime'");
+    }
+
+    public void setPatient(Patient patient2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setPatient'");
+    }
 }
