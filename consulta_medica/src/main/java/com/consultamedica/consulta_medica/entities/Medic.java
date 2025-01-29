@@ -2,12 +2,11 @@ package com.consultamedica.consulta_medica.entities;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import com.consultamedica.consulta_medica.repository.ConsultationRepository;
 
 @Entity
 public class Medic {
@@ -16,11 +15,30 @@ public class Medic {
     private Long id;
     private String name;
     private String specialty;
-    
+
     @ElementCollection
     private List<LocalDateTime> availableTime;
 
-    public List<Consultation> getDisponibleDates() {
-        throw new UnsupportedOperationException("Unimplemented method 'getDisponibleDates'");
+    @OneToMany(mappedBy = "medic")
+    private List<Consultation> consultations;
+
+    @Transient
+    private ConsultationRepository consultationRepository;
+
+    public List<LocalDateTime> getAvailableDates(ConsultationRepository consultationRepository) {
+        this.consultationRepository = consultationRepository;
+
+        List<LocalDateTime> agendados = consultationRepository.findByMedicId(this.id)
+            .stream()
+            .map(Consultation::getDateTime)
+            .collect(Collectors.toList());
+
+        return availableTime.stream()
+            .filter(horario -> !agendados.contains(horario))
+            .collect(Collectors.toList());
+    }
+
+    public void setConsultationRepository(ConsultationRepository consultationRepository) {
+        this.consultationRepository = consultationRepository;
     }
 }

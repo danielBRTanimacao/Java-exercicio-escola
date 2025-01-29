@@ -10,6 +10,7 @@ import com.consultamedica.consulta_medica.entities.Medic;
 import com.consultamedica.consulta_medica.entities.Patient;
 import com.consultamedica.consulta_medica.repository.ConsultationRepository;
 import com.consultamedica.consulta_medica.repository.MedicRepository;
+import com.consultamedica.consulta_medica.repository.PatientRepository;
 
 @Service
 public class ConsultationService {
@@ -19,26 +20,26 @@ public class ConsultationService {
     @Autowired
     private MedicRepository medicRepository;
 
+    @Autowired
+    private PatientRepository patientRepository;
+
     public Consultation scheduleAppointment(Long patientId, Long medicId, LocalDateTime dateTime) {
-        Medic medic = medicRepository.findById(medicId).orElseThrow(() -> new RuntimeException("Medico não foi encontrado!"));
+        Medic medic = medicRepository.findById(medicId)
+            .orElseThrow(() -> new RuntimeException("Médico não encontrado!"));
 
-        boolean jaScheduled = consultationRepository
-            .findByMedicIdAndDateTime(medicId, dateTime)
-            .size() > 0;
+        Patient patient = patientRepository.findById(patientId)
+            .orElseThrow(() -> new RuntimeException("Paciente não encontrado!"));
 
-        if (jaScheduled || !medic.getDisponibleDates().contains(dateTime)) {
-            throw new RuntimeException("Horario indisponivel");
+        boolean jaScheduled = !consultationRepository.findByMedicIdAndDateTimeBetween(medicId, dateTime, dateTime).isEmpty();
+
+        if (jaScheduled || !medic.getAvailableDates(consultationRepository).contains(dateTime)) {
+            throw new RuntimeException("Horário indisponível");
         }
+
         Consultation consult = new Consultation();
-    
         consult.setMedic(medic);
-        consult.setDataTime(dateTime);
-        consult.setPatient(new Patient());
+        consult.setDateTime(dateTime);
+        consult.setPatient(patient);
         return consultationRepository.save(consult);
     }
-    
-    public Consultation scheduleConsultation(Long pacientId, Long medicId, LocalDateTime dateTime) {
-        throw new UnsupportedOperationException("Unimplemented method 'scheduleConsultation'");
-    }
-
 }

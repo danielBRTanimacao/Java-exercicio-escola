@@ -26,7 +26,7 @@ public class ConsultationController {
         @RequestParam Long medicId,
         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateTime) {
         
-        Consultation consult = consultationService.scheduleConsultation(pacientId, medicId, dateTime);
+        Consultation consult = consultationService.scheduleAppointment(pacientId, medicId, dateTime);
         return ResponseEntity.ok(consult);
     }
     

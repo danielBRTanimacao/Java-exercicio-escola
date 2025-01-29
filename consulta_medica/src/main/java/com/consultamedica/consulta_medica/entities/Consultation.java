@@ -2,14 +2,7 @@ package com.consultamedica.consulta_medica.entities;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.ManyToAny;
-
-import jakarta.annotation.Generated;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Consultation {
@@ -25,20 +18,43 @@ public class Consultation {
 
     private LocalDateTime dateTime;
 
-    private boolean cancel = false;
+    private boolean canceled = false; // Renomeado para mais clareza
 
-    public void setMedic(Medic medic2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setMedic'");
+    // Getters e Setters
+
+    public long getId() {
+        return id;
     }
 
-    public void setDataTime(LocalDateTime dateTime2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setDataTime'");
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPatient(Patient patient2) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setPatient'");
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Medic getMedic() {
+        return medic;
+    }
+
+    public void setMedic(Medic medic) {
+        this.medic = medic;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public boolean isCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
     }
 }
