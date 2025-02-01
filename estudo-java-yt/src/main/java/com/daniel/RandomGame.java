@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class RandomGame {
     public static void main(String[] args) {
-        int maxValueSort = 20;
-        int chosedNumber = 5;
+        int maxValueSort = 60;
+        int chosedNumber = 6;
 
         System.out.println(sortListInts(maxValueSort, chosedNumber));
     }
