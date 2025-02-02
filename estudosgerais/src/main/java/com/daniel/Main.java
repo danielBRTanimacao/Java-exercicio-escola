@@ -1,5 +1,7 @@
 package com.daniel;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,41 +11,17 @@ public class Main {
         russianRoullet(1, 6);
     }
 
-    public static void russianRoullet(int numberOfBullet, int capacityOfBullet) {
+    public static void russianRoullet(int numberOfBullet, int bulletCapacity) {
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
-        int addNumber = rand.nextInt(6) + 1;
-        Player p1 = new Player("Daniel", false);
-        Player p2 = new Player("Bot", false);
+        List<Integer> revolver = new ArrayList<>();
 
-        boolean shoted = false;
-
-        while (!shoted) {
-            System.out.println(addNumber);
-            System.out.println("Digite [0] para atirar em vc mesmo [1] para atirar no companheiro");
-            int choosed = scanner.nextInt();
-
-            if (choosed == 0) {
-                addNumber+= numberOfBullet;
-                System.out.println("...");
-                if (addNumber >= capacityOfBullet) {
-                    shoted = true;
-                    System.out.println("Você esta morto!");
-                    break;
-                }
-                System.out.println("Ufa esta salvo!");
-            } else {
-                addNumber+= numberOfBullet;
-                System.out.println("...");
-                if (addNumber >= capacityOfBullet) {
-                    shoted = true;
-                    System.out.println("Você esta morto!");
-                    break;
-                }
-                System.out.println("Ufa esta salvo!");
-            }
+        for (int i = 0; i < bulletCapacity; i++) {
+            int n = rand.nextInt(numberOfBullet+1);
+            revolver.add(n);
         }
 
+        System.out.println(revolver);
         scanner.close();
     }
 
