@@ -5,7 +5,46 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        numberGuessGame(10);
+        // numberGuessGame(10);
+        russianRoullet(1, 6);
+    }
+
+    public static void russianRoullet(int numberOfBullet, int capacityOfBullet) {
+        Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
+        int addNumber = rand.nextInt(6) + 1;
+        Player p1 = new Player("Daniel", false);
+        Player p2 = new Player("Bot", false);
+
+        boolean shoted = false;
+
+        while (!shoted) {
+            System.out.println(addNumber);
+            System.out.println("Digite [0] para atirar em vc mesmo [1] para atirar no companheiro");
+            int choosed = scanner.nextInt();
+
+            if (choosed == 0) {
+                addNumber+= numberOfBullet;
+                System.out.println("...");
+                if (addNumber >= capacityOfBullet) {
+                    shoted = true;
+                    System.out.println("Você esta morto!");
+                    break;
+                }
+                System.out.println("Ufa esta salvo!");
+            } else {
+                addNumber+= numberOfBullet;
+                System.out.println("...");
+                if (addNumber >= capacityOfBullet) {
+                    shoted = true;
+                    System.out.println("Você esta morto!");
+                    break;
+                }
+                System.out.println("Ufa esta salvo!");
+            }
+        }
+
+        scanner.close();
     }
 
     public static void numberGuessGame(int maxValueGuess){
