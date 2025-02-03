@@ -1,7 +1,5 @@
 package com.daniel;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,14 +12,34 @@ public class Main {
     public static void russianRoullet(int numberOfBullet, int bulletCapacity) {
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
-        List<Integer> revolver = new ArrayList<>();
 
-        for (int i = 0; i < bulletCapacity; i++) {
-            int n = rand.nextInt(numberOfBullet+1);
-            revolver.add(n);
+        System.out.println("Digite um valor para apostar!");
+        double valueTrade = scanner.nextDouble();
+
+        int attempts = 0;
+        while (true) {
+            System.out.println("[0] Para disparar!\n[1] Para se salvar!");
+            int response = scanner.nextInt();
+
+            if (response == 0) {
+                int randomShoot = rand.nextInt(bulletCapacity+numberOfBullet);
+                attempts++;
+                if (attempts > (bulletCapacity - 1)) {
+                    System.out.println("Você foi de vasco ultima bala!");
+                    break;
+                }
+                if (randomShoot >= bulletCapacity) {
+                    System.out.println("Você foi de vasco tiro número: " + attempts);
+                    break;
+                }
+                System.out.println("Ufá... está vivo slot número " + attempts);
+                valueTrade *= attempts;
+            } else {
+                System.out.println("você ganhou R$" + valueTrade);
+                break;
+            }
         }
 
-        System.out.println(revolver);
         scanner.close();
     }
 
