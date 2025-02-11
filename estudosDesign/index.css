@@ -82,7 +82,8 @@ header {
     color: #f3f3f3;
 }
 
-.navigation ul {
+.navigation ul,
+.sidenav ul {
     display: flex;
     align-items: center;
     gap: 1em;
@@ -92,6 +93,10 @@ header {
 .navigation ul li a {
     color: white;
     font-size: var(--third-font);
+}
+
+.nav-burger {
+    display: none;
 }
 
 .form-nav form {
@@ -126,4 +131,18 @@ main.content {
     margin: 1em 0;
     padding: 0.5em;
     border-radius: 6px;
+}
+
+.sidenav ul {
+    gap: 0.5em;
+    flex-direction: column;
+}
+
+@media (max-width: 767.98px) {
+    .nav-burger {
+        display: block;
+    }
+    .form-nav {
+        display: none;
+    }
 }
