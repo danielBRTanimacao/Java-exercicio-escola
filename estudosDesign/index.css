@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --primary-color: #ffb22c;
+    --secondary-color: #ff9d23;
+    --success-color: #16c47f;
+    --danger-color: #f93827;
+
+    --first-font: 26pt;
+    --second-font: 20pt;
+    --third-font: 18pt;
+    --fourth-font: 16pt;
+    --fifith-font: 14pt;
+    --sixth-font: 12pt;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 1em 3em;
+    height: 100dvh;
+    background: var(--primary-color);
+    background: linear-gradient(
+            180deg,
+            var(--primary-color) 0%,
+            rgba(255, 255, 255, 1) 100%
+        )
+        no-repeat;
+}
+
+h1 {
+    font-size: var(--first-font);
+}
+
+h2 {
+    font-size: var(--second-font);
+}
+
+h3 {
+    font-size: var(--third-font);
+}
+
+h4 {
+    font-size: var(--fourth-font);
+}
+
+h5 {
+    font-size: var(--fifith-font);
+}
+
+p {
+    font-size: var(--sixth-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Roboto", serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: "Roboto", serif;
+    font-size: var(--first-font);
+    text-decoration: none;
+    font-weight: 900;
+    color: white;
+}
+
+.title:hover {
+    color: #f3f3f3;
+}
+
+.navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    list-style: none;
+}
+
+.navigation ul li a {
+    color: white;
+    font-size: var(--third-font);
+}
+
+.form-nav form {
+    display: flex;
+}
+
+.form-nav form input,
+.form-nav form button {
+    padding: 0.6em;
+    border-radius: 6px 0 0 6px;
+    border: none;
+}
+
+.form-nav form input:focus {
+    outline: none;
+}
+
+.form-nav form button {
+    color: white;
+    cursor: pointer;
+    border-radius: 0 6px 6px 0;
+    background-color: var(--secondary-color);
+}
+
+.form-nav form button:hover {
+    background-color: var(--danger-color);
+}
+
+main.content {
+    display: flex;
+    background-color: white;
+    margin: 1em 0;
+    padding: 0.5em;
+    border-radius: 6px;
+}
