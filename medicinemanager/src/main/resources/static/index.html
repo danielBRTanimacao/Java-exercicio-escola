@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gestão de Remédios</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+            table {
+                width: 80%;
+                margin: 20px auto;
+                border-collapse: collapse;
+            }
+            th,
+            td {
+                border: 1px solid black;
+                padding: 10px;
+            }
+            th {
+                background-color: #f4f4f4;
+            }
+            input,
+            button {
+                padding: 10px;
+                margin: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Gestão de Remédios</h1>
+
+        <form id="remedioForm">
+            <input type="text" id="nome" placeholder="Nome" required />
+            <input
+                type="text"
+                id="fabricante"
+                placeholder="Fabricante"
+                required
+            />
+            <input
+                type="number"
+                id="dosagem"
+                placeholder="Dosagem (mg)"
+                step="0.1"
+                required
+            />
+            <input type="text" id="descricao" placeholder="Descrição" />
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <h2>Lista de Remédios</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Fabricante</th>
+                    <th>Dosagem</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody id="remediosTable"></tbody>
+        </table>
+
+        <script>
+            const API_URL = "http://127.0.0.1:8000/api";
+
+            function carregarRemedios() {
+                fetch(API_URL)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const tbody = document.getElementById("remediosTable");
+                        tbody.innerHTML = "";
+                        data.forEach((remedio) => {
+                            const row = `<tr>
+                            <td>${remedio.id}</td>
+                            <td>${remedio.name}</td>
+                            <td>${remedio.manufacturer}</td>
+                            <td>${remedio.dosage} mg</td>
+                            <td>${remedio.description}</td>
+                        </tr>`;
+                            tbody.innerHTML += row;
+                        });
+                    })
+                    .catch((error) =>
+                        console.error("Erro ao carregar remédios:", error)
+                    );
+            }
+
+            document
+                .getElementById("remedioForm")
+                .addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    const remedio = {
+                        nome: document.getElementById("nome").value,
+                        fabricante: document.getElementById("fabricante").value,
+                        dosagem: document.getElementById("dosagem").value,
+                        descricao: document.getElementById("descricao").value
+                    };
+                    fetch(API_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(remedio)
+                    })
+                        .then((response) => response.json())
+                        .then(() => {
+                            carregarRemedios();
+                            this.reset();
+                        })
+                        .catch((error) =>
+                            console.error("Erro ao adicionar remédio:", error)
+                        );
+                });
+
+            carregarRemedios();
+        </script>
+    </body>
+</html>

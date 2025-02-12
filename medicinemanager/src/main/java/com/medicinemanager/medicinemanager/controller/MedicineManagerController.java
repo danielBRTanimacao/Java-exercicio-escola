@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/api/remedios")
+@RequestMapping("/api")
 public class MedicineManagerController {
     private final MedicineManagerService service;
 
