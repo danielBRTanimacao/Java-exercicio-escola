@@ -33,21 +33,21 @@
         <h1>Gestão de Remédios</h1>
 
         <form id="remedioForm">
-            <input type="text" id="nome" placeholder="Nome" required />
+            <input type="text" id="name" placeholder="Nome" required />
             <input
                 type="text"
-                id="fabricante"
+                id="manufacturer"
                 placeholder="Fabricante"
                 required
             />
             <input
                 type="number"
-                id="dosagem"
+                id="dosage"
                 placeholder="Dosagem (mg)"
                 step="0.1"
                 required
             />
-            <input type="text" id="descricao" placeholder="Descrição" />
+            <input type="text" id="description" placeholder="Descrição" />
             <button type="submit">Adicionar</button>
         </form>
 
@@ -68,7 +68,7 @@
         <script>
             const API_URL = "http://127.0.0.1:8000/api";
 
-            function carregarRemedios() {
+            function loadMedicines() {
                 fetch(API_URL)
                     .then((response) => response.json())
                     .then((data) => {
@@ -95,10 +95,12 @@
                 .addEventListener("submit", function (event) {
                     event.preventDefault();
                     const remedio = {
-                        nome: document.getElementById("nome").value,
-                        fabricante: document.getElementById("fabricante").value,
-                        dosagem: document.getElementById("dosagem").value,
-                        descricao: document.getElementById("descricao").value
+                        name: document.getElementById("name").value,
+                        manufacturer:
+                            document.getElementById("manufacturer").value,
+                        dosage: document.getElementById("dosage").value,
+                        description:
+                            document.getElementById("description").value
                     };
                     fetch(API_URL, {
                         method: "POST",
@@ -107,7 +109,7 @@
                     })
                         .then((response) => response.json())
                         .then(() => {
-                            carregarRemedios();
+                            loadMedicines();
                             this.reset();
                         })
                         .catch((error) =>
@@ -115,7 +117,7 @@
                         );
                 });
 
-            carregarRemedios();
+            loadMedicines();
         </script>
     </body>
 </html>
