@@ -10,7 +10,7 @@ public class Student extends Person{
 
     @Override
     public void displayInfo() {
-        System.out.println("Estudante: " + name + " (ID: " + id + ")" + " serie " + gradeSchool);
+        System.out.println("Estudante: " + name + " serie " + gradeSchool);
     }
 
     public String getClassRoom() {
