@@ -15,30 +15,26 @@ public class Des004 {
     }
 
     public static boolean validateCpf(String cpf) {
-        cpf = cpf.replaceAll("[^0-9]", "");
-  
-        if (cpf.length() != 11 || cpf.matches("(\\d)\\1{10}")) {
+        if (cpf == null) return false;
+
+        cpf = cpf.replaceAll("\\D", "");
+
+        if (cpf.length() != 11 || cpf.matches("^(\\d)\\1{10}$")) {
             return false;
         }
-  
-        int[] digits = new int[11];
-        for (int i = 0; i < 11; i++) {
-            digits[i] = cpf.charAt(i) - '0';
-        }
-        int sum = 0;
-        for (int i = 0; i < 9; i++) {
-            sum += digits[i] * (10 - i);
-        }
-        int remainder = sum % 11;
-        int digit1 = (remainder < 2) ? 0 : (11 - remainder);
 
-        sum = 0;
-        for (int i = 0; i < 10; i++) {
-            sum += digits[i] * (11 - i);
+        return checkDigit(cpf, 9) && checkDigit(cpf, 10);
+    }
+
+    private static boolean checkDigit(String cpf, int position) {
+        int sum = 0;
+        for (int i = 0; i < position; i++) {
+            sum += (cpf.charAt(i) - '0') * (position + 1 - i);
         }
-        remainder = sum % 11;
-        int digit2 = (remainder < 2) ? 0 : (11 - remainder);
-  
-        return (digit1 == digits[9] && digit2 == digits[10]);
+
+        int remainder = sum % 11;
+        int expectedDigit = (remainder < 2) ? 0 : (11 - remainder);
+
+        return expectedDigit == (cpf.charAt(position) - '0');
     }
 }
